@@ -67,6 +67,16 @@ class Calculator {
         return op(lhs, rhs)
     }
     
+    func mathOp(args: [Int], beg: Int, op: (Int, Int) -> (Int)) -> Int {
+        var result = beg
+        
+        for el in args {
+            result = op(result, el)
+        }
+        
+        return result
+    }
+    
     func count(_ arr: [Int]) -> Int {
         return arr.count
     }
