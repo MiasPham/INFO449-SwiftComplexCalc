@@ -33,12 +33,30 @@ class Calculator {
         return lhs + rhs
     }
     
+    func add(_ arr: [Int]) -> Int {
+        var total = 0
+        
+        for el in arr {
+            total = add(lhs: total, rhs: el)
+        }
+        return total
+    }
+    
     func subtract(lhs: Int, rhs: Int) -> Int {
         return lhs - rhs
     }
     
     func multiply(lhs: Int, rhs: Int) -> Int {
         return lhs * rhs
+    }
+    
+    func multiply(_ arr: [Int]) -> Int {
+        var total = 1
+        
+        for el in arr {
+            total = multiply(lhs: total, rhs: el)
+        }
+        return total
     }
     
     func divide(lhs: Int, rhs: Int) -> Int {
@@ -48,8 +66,19 @@ class Calculator {
     func mathOp(lhs: Int, rhs: Int, op: (Int, Int) -> (Int)) -> Int {
         return op(lhs, rhs)
     }
+    
+    func count(_ arr: [Int]) -> Int {
+        return arr.count
+    }
+    
+    func avg(_ arr: [Int]) -> Int {
+        if arr.count == 0 {
+            return 0
+        }
+        
+        return add(arr) / arr.count
+    }
 }
-
 //: Don't change the name of this object (`calc`); it's used in all the tests.
 let calc = Calculator()
 
@@ -63,6 +92,7 @@ let calc = Calculator()
 //: Keep in mind that writing new tests may reveal ambiguity in the specification above--if that's the case, document the ambiguity, declare what you think *should* happen, and write the test to test for it.
 
 // ===== Your tests go here
+calc.avg([]) == 0
 
 //: ---
 //: ## Test code block
