@@ -44,6 +44,10 @@ class Calculator {
     func divide(lhs: Int, rhs: Int) -> Int {
         return lhs / rhs
     }
+    
+    func mathOp(lhs: Int, rhs: Int, op: (Int, Int) -> (Int)) -> Int {
+        return op(lhs, rhs)
+    }
 }
 
 //: Don't change the name of this object (`calc`); it's used in all the tests.
